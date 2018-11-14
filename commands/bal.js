@@ -13,9 +13,9 @@ module.exports.run = (config,client,message,args) => {
 
     embed.setFooter(" © Lil Cold#9128", message.author.avatarURL);
 
-    userDao.getMemberFromDiscordId(message.author.id)
+    userDao.getUser(message.author.id)
     .then(user => {
-        embed.addField("Gold",user.Gold,false);
+        embed.addField("Money",user.Money,false);
         message.channel.send({embed: embed});
     })
 

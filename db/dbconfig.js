@@ -18,9 +18,19 @@ let init = function () {
         ExpRemaining Integer,
         Gold Integer,
         Prefix varchar,
-        DiscordId Integer
+        DiscordId Integer,
+        WorkId Integer
      );`
     );
+
+    db.run(`CREATE TABLE if not exists Work(
+        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+        Name Varchar,
+        Description Varchar,
+        MoneyPerWork Integer   
+     );`
+    );
+
 };
 
 module.exports = {
