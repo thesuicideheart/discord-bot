@@ -5,6 +5,15 @@ class UserDao {
         this.common = new daoCommon();
     }
 
+    takeMoneyFromUser(discordId , moneyAmount){
+        let sqlRequest = `UPDATE Users SET Money = Money - $money WHERE DiscordId = $id`;
+        let sqlParams = {
+            $money: moneyAmount,
+            $id:discordId
+        }
+        return this.common.run(sqlRequest,sqlParams);
+    }
+
     getWork(workId){
         let sqlRequest = `SELECT * FROM Work WHERE Id=$Id`;
         let sqlParams = {
@@ -15,11 +24,11 @@ class UserDao {
 
     giveUserMoney(discordId, moneyAmount){
         let sqlRequest = `UPDATE Users SET Money = Money + $moneyAmount WHERE DiscordId = $DiscordId`;
-        let params = {
+        let sqlParams = {
             $moneyAmount: moneyAmount,
             $DiscordId:discordId
         }
-        return this.common.run(sqlRequest,params);
+        return this.common.run(sqlRequest,sqlParams);
     }
 
     addUser(discordId){
