@@ -7,9 +7,9 @@
         "debug": "nodemon bot.js"
     },
     "dependencies": {
-        "bluebird": "^3.5.2",
+        "bluebird": "^3.5.3",
         "discord.js": "^11.4.2",
         "enmap": "^4.3.3",
-        "sqlite3": "^4.0.3"
+        "sqlite3": "^4.0.4"
     }
 }

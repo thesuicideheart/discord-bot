@@ -14,6 +14,24 @@ class UserDao {
         return this.common.run(sqlRequest,sqlParams);
     }
 
+    setJob(WorkId,DiscordId){
+        let sqlRequest = `UPDATE Users SET WorkId=$workId WHERE DiscordId = $discordId`;
+        let sqlParams = {
+            $workId: WorkId,
+            $discordId: DiscordId
+        }
+        return this.common.run(sqlRequest,sqlParams);
+    }
+
+    getWorkId(WorkName){
+        //Todo: implement this.
+        let sqlRequest = `SELECT Id FROM Work WHERE Name = $WorkName`;
+        let sqlParams = {
+            $WorkName: WorkName
+        }
+        return this.common.findOne(sqlRequest,sqlParams);
+    }
+
     getWork(workId){
         let sqlRequest = `SELECT * FROM Work WHERE Id=$Id`;
         let sqlParams = {
@@ -32,7 +50,7 @@ class UserDao {
     }
 
     addUser(discordId){
-        let sqlRequest = `INSERT INTO Users(Level,Exp,ExpRemaining,Gold,Prefix,DiscordId)VALUES(1,0,100,10,"",$DiscordId)`
+        let sqlRequest = `INSERT INTO Users(Level,Exp,ExpRemaining,Money,Prefix,DiscordId,WorkId)VALUES(1,0,100,10,"",$DiscordId, NULL)`
         let sqlParams = {
             $DiscordId: discordId
         }

@@ -15,17 +15,20 @@ module.exports.run = (config,client,message,args) => {
             
             if(member){
                 userDao.getUser(member.id)
-                .then(user => {
+                .then(user =>{
                     if(user){
-                        console.log(user);
-                        userDao.doesUserExist(member.id)
-                        .then(user2 => {
-                            if(user2){
-                                
-                            }
-                        })
-                    }else{
-                        console.log("error");
+                        if(amt){
+                            userDao.giveUserMoney(member.id,amt);
+                            userDao.takeMoneyFromUser(message.author.id,amt);
+                            let embed = new Discord.RichEmbed();
+                            embed.setColor(utils.getRandomColorForEmbed());
+                            embed.setTitle("Gifted some money!");
+                            embed.setDescription(`You got gifted some money from ${message.author.username}!`);
+                            embed.addField("Sender", message.author.username);
+                            embed.addField("Reciever", member.user.username);
+                            embed.addField("Amount",amt);
+                            message.channel.send(member,{embed: embed});
+                        }
                     }
                 });
             }
