@@ -5,6 +5,8 @@ module.exports = (client, db, message) => {
     // Ignore all bots
     if (message.author.bot) return;
 
+    
+
     let userDao = new userDataAccessObject();
 
     userDao.doesUserExist(message.author.id)

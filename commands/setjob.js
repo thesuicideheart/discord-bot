@@ -16,7 +16,7 @@ module.exports.run = (config,client,message,args) => {
                 let embed = new Discord.RichEmbed();
                 embed.setAuthor(message.author.username);
                 embed.setColor(helper.getRandomColorForEmbed());
-                embed.setDescription("You applied for a developer job.\nYou got accepted!\nCongratulations");
+                embed.setDescription(`You applied for a ${workName} job.\nYou got accepted!\nCongratulations`);
                 embed.addField("New job",workName);
                 message.channel.send({embed: embed});
             }

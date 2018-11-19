@@ -11,3 +11,7 @@ module.exports.getUserFriendlyDate = () => {
     var date = new Date();
     date.getUTCDate();
 }
+
+module.exports.getRandomNumber = (min,max) => {
+    return Math.random() * (max - min) + min;
+}
